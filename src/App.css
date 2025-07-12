@@ -1,38 +1,284 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
 }
+button {
+  color: black;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  all: unset;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Cart preview container */
+.cart-preview-body {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 1.5vh;
+  max-width: 90%;
+  margin: 4vh auto;
+  padding: 2vh;
+  background-color: #dee4e7;
+  border-radius: 10px;
+}
+.cart-badge {
+  width: 100px;
+  height: 100px;
+  padding: 2px 6px;
+  background-color: red;
+  border-radius: 50%;
+}
+.cart-button:focus {
+  outline: 2px solid #555;
+  outline-offset: 4px;
+}
+.cart-toggle-button.remove {
+  background-color: #c00; /* a bold red for remove */
+  color: #fff;
+  font-weight: 700;
+  /* …same padding/border-radius as above… */
+}
+.cart-toggle-button.remove:hover {
+  background-color: #e00;
+}
+
+.cart-toggle-button.add,
+.cart-toggle-button.remove {
+  background: none; /* remove any BG */
+  color: #000 !important; /* force solid black text */
+  font-weight: 700; /* bold text */
+  border: none; /* remove any borders */
+  padding: 0; /* remove extra padding if you want */
+}
+
+.cart-toggle-button.add:hover,
+.cart-toggle-button.remove:hover {
+  background: none;
+}
+
+/* Heading */
+.cart-preview-body h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1vh;
+}
+.remove-button {
+  position: relative; /* ensure it’s on top */
+  z-index: 10;
+  background-color: #f44336; /* red remove button */
   color: white;
+  border-radius: 4px;
+  padding: 0.5em 1em;
+  visibility: visible;
+  opacity: 1;
 }
 
-.App-link {
-  color: #61dafb;
+/* If you have a hover overlay, explicitly override it */
+.cart-item-body:hover .remove-button {
+  visibility: visible;
+  opacity: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Individual cart items */
+.cart-item-body {
+  display: flex;
+  align-items: center;
+  gap: 1.5vh;
+  padding: 1vh;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Thumbnail image */
+.cart-item-body .thumb {
+  width: 8vh;
+  height: 8vh;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Info block (title + price) */
+.cart-item-body .item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vh;
+}
+
+/* Title styling */
+.cart-item-body .item-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Price styling */
+.cart-item-body .item-price {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #555;
+}
+
+/* “Add to Cart” button tweak (if you want one in the preview) */
+.cart-item-body button {
+  margin-left: auto;
+  all: unset;
+  padding: 0.5vh 1vh;
+  background-color: #c0c5c8;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.cart-item-body button:hover {
+  background-color: #a6acaf;
+}
+
+.navbar {
+  background-color: #dee4e7;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* gap: 140vh; */
+  align-items: center;
+  border-radius: 10px;
+}
+.navbar-brand {
+  display: block;
+}
+.right {
+  display: flex;
+  gap: 5vh;
+}
+
+#logo {
+  width: 120px;
+  height: auto;
+  background-color: #dee4e7;
+}
+#waffle {
+  width: 8vh;
+  height: 8vh;
+  cursor: pointer;
+}
+.brand-list {
+  width: 120px;
+  position: absolute;
+  top: 60px; /* appears below the navbar */
+  right: 19vh; /* align to the waffle icon */
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 8px 0;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+/* Brand button styles */
+.brand-list button {
+  display: block;
+  width: 120px;
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.brand-list button:hover {
+  background-color: #f2f2f2; /* light grey on hover */
+}
+
+/* Highlight active brand */
+.brand-active {
+  color: #c00; /* Red text for active brand */
+  font-weight: 600;
+}
+.cart-icon svg {
+  width: 28px;
+  height: 28px;
+  color: #333; /* Icon color */
+}
+.cart-icon {
+  display: flex; /* Make sure SVG is centered */
+  align-items: center;
+  cursor: pointer;
+}
+.lineup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  /* padding: 2vh; */
+}
+.main {
+  /* border: 2px solid black; */
+  width: 30%;
+  height: 50%;
+  padding: 2vh;
+  border-radius: 10px;
+  background-color: #dee4e7;
+  margin-top: 4vh;
+}
+.heroImage {
+  width: 37vh;
+  height: 37vh;
+  padding: 1vh;
+  object-fit: cover;
+  /* margin-left: 2vh; */
+  transition: transform 1s ease-in-out;
+  cursor: pointer;
+}
+.heroImage:hover {
+  transform: scale(1.15);
+}
+.heroSubTitle {
+  cursor: default;
+  height: 8vh;
+  margin-top: 1px;
+  margin-bottom: 2vh;
+  font-weight: 600;
+  color: grey;
+}
+.heroTitle {
+  cursor: default;
+
+  font-size: medium;
+  font-weight: 600;
+  margin-top: 3vh;
+  margin-bottom: 0px;
+}
+#heroImage {
+  width: 35vh;
+  border-radius: 10px;
+  height: 35vh;
+}
+.heroprice {
+  cursor: default;
+  width: 100%;
+}
+.vertical {
+  display: flex;
+
+  font-weight: 700;
+  gap: 10vh;
+}
+.cartIcon {
+  color: black;
+  padding: 8px;
+  transition: transform 1s ease-in-out;
+  height: 8vh;
+  width: 24vh;
+}
+.cartIcon:hover {
+  transform: scale(1.1);
+}
+
+#cart-icon-button {
+  height: 8vh;
+  width: 24vh;
+  border-radius: 10px;
 }
