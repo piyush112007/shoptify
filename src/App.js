@@ -16,7 +16,13 @@ function App() {
   useEffect(() => {
     fetch("/data/products.json")
       .then((response) => response.json())
-      .then((data) => setProducts(data))
+      .then((data) => {
+        const updatedData = data.map((product) => ({
+          ...product,
+          image: process.env.PUBLIC_URL + product.image,
+        }));
+        setProducts(updatedData);
+      })
       .catch((error) => console.error("Error loading products:", error));
   }, []);
   const Products = products.filter((product) => product.Brand === currentBrand);
