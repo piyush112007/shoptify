@@ -124,15 +124,7 @@ const Products = [
       "A pastel-toned Nike Dunk Low with rose pink overlays and navy accents for a clean, stylish look.",
     price: "₹17 495.00",
   },
-  {
-    title: "Air-Roll Stroll",
-    subtitle: "Men's Running",
-    image: AirRollStroll,
-    Brand: "Adidas",
-    Description:
-      "A pastel-toned Nike Dunk Low with rose pink overlays and navy accents for a clean, stylish look.",
-    price: "₹3 599.00",
-  },
+
   {
     title: "Air-Roll Stroll",
     subtitle: "Men's Running",

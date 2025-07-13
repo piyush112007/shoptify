@@ -30,7 +30,7 @@ export default function Tile({
         </div>
         <div className="vertical container">
           <div className="heroprice">
-            <p>MRP: {price}</p>
+            <p>{price}</p>
           </div>
         </div>
       </div>

@@ -8,26 +8,32 @@ export default function Navbar({
   showCart,
   onBrandSelect,
   currentBrand,
+  onAddCustomShoe, // 👈 trigger form
 }) {
   const [showBrands, setShowBrands] = useState(false);
   const companies = ["Nike", "Adidas", "Puma", "Reebok"];
+
   const handleBrandClick = (brand) => {
     onBrandSelect(brand);
     setShowBrands(false);
   };
+
   return (
     <nav className="navbar">
       <div className="left">
         <a className="navbar-brand" href="#">
           <img id="logo" src={logo} alt="Logo" />
         </a>
+        <p className="brandIndicator">👟{currentBrand}</p>
       </div>
       <div className="right">
         <button onClick={() => setShowBrands((prev) => !prev)}>
           <img id="waffle" src={waffle} alt="Waffle" />
         </button>
+
         {showBrands && (
           <div className="brand-list">
+            {/* Standard brands */}
             {companies.map((brand) => (
               <button
                 key={brand}
@@ -39,9 +45,34 @@ export default function Navbar({
                 {brand}
               </button>
             ))}
+
+            {/* Divider */}
+            <hr className="dropdown-divider" />
+
+            {/* View all custom shoes */}
+            <button
+              onClick={() => handleBrandClick("Custom")}
+              className={
+                currentBrand === "Custom" ? "brand-active" : "brand-button"
+              }
+            >
+              👟 View Custom Shoes
+            </button>
+
+            {/* Add new custom shoe */}
+            <button
+              onClick={() => {
+                setShowBrands(false);
+                onAddCustomShoe();
+              }}
+              className="custom-add-button"
+            >
+              ➕ Add New Custom Shoe
+            </button>
           </div>
         )}
 
+        {/* Cart Icon */}
         <button
           id="cart-icon-button"
           type="button"

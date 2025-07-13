@@ -1,29 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Tile from "./Components/tile";
-import ProductData from "./Components/product"; // Using imported product array
+import ProductData from "./Components/product";
 import Navbar from "./Components/navbar";
+import AddCustomShoeForm from "./Components/AddCustomShoe";
 
 function App() {
   const [cart, setCart] = useState([]);
   const [showCart, setShowCart] = useState(false);
   const [currentBrand, setCurrentBrand] = useState("Reebok");
+  const [products, setProducts] = useState(ProductData);
+  const [addingCustomShoe, setAddingCustomShoe] = useState(false); // 👈 Track form
 
   const handleBrandSelect = (brand) => {
     setCurrentBrand(brand);
   };
 
-  // Filter products based on current brand
-  const Products = ProductData.filter(
-    (product) => product.Brand === currentBrand
-  );
+  // Load cart from localStorage
+  useEffect(() => {
+    const savedCart = localStorage.getItem("sneakify_cart");
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("sneakify_cart", JSON.stringify(cart));
+  }, [cart]);
 
   const handleAdd = (product) => setCart((prev) => [...prev, product]);
   const handleRemove = (product) =>
     setCart((prev) => prev.filter((p) => p !== product));
   const toggleCart = () => setShowCart((prev) => !prev);
 
-  const list = showCart ? cart : Products;
+  const handleAddCustomShoe = (newShoe) => {
+    setProducts((prev) => [...prev, newShoe]); // Add shoe
+    setAddingCustomShoe(false); // Back to listing
+    setCurrentBrand("Custom"); // Show custom shoes
+  };
+
+  const list = showCart
+    ? cart
+    : products.filter((product) => product.Brand === currentBrand);
 
   return (
     <div className="App">
@@ -33,22 +51,32 @@ function App() {
         cartCount={cart.length}
         onCartClick={toggleCart}
         showCart={showCart}
+        onAddCustomShoe={() => setAddingCustomShoe(true)} // 👈 Show form
       />
 
-      <div className="lineup container">
-        {list.map((item, idx) => (
-          <Tile
-            key={item.id || idx}
-            Title={item.title}
-            image={item.image}
-            price={item.price}
-            subtitle={item.subtitle}
-            inCart={cart.includes(item)}
-            onToggle={() =>
-              cart.includes(item) ? handleRemove(item) : handleAdd(item)
-            }
+      <div className="container">
+        {addingCustomShoe ? (
+          <AddCustomShoeForm
+            onSubmit={handleAddCustomShoe}
+            onCancel={() => setAddingCustomShoe(false)} // 👈 Cancel form
           />
-        ))}
+        ) : (
+          <div className="lineup">
+            {list.map((item, idx) => (
+              <Tile
+                key={item.id || idx}
+                Title={item.title}
+                image={item.image}
+                price={item.price}
+                subtitle={item.subtitle}
+                inCart={cart.includes(item)}
+                onToggle={() =>
+                  cart.includes(item) ? handleRemove(item) : handleAdd(item)
+                }
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

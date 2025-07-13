@@ -1,9 +1,39 @@
+:root {
+  /* Brand Colors */
+  --primary-color: #111827; /* Dark charcoal (main text, logo) */
+  --secondary-color: #4f46e5; /* Indigo (buttons, highlights) */
+  --accent-color: #10b981; /* Emerald green (success, price tags) */
+  --warning-color: #f59e0b; /* Amber (alerts, badges) */
+  --error-color: #ef4444; /* Red (remove buttons) */
+
+  /* Background Colors */
+  --background-color: #f9fafb; /* Light gray background */
+  --card-color: #ffffff; /* White for product cards */
+  --navbar-color: #dee4e7; /* Navbar background */
+  --footer-color: #111827; /* Dark footer background */
+
+  /* Text Colors */
+  --text-color: #1f2937; /* Dark text */
+  --subtle-text-color: #6b7280; /* Grayish text for subtitles */
+  --contrast-text-color: #ffffff; /* For buttons on dark bg */
+
+  /* Hover & Active */
+  --hover-color: #4338ca; /* Darker Indigo for hover states */
+  --hover-background: #f3f4f6; /* Light hover background */
+  --active-color: #2563eb; /* Blue for active states */
+  --disabled-color: #d1d5db; /* Gray for disabled elements */
+
+  /* Shadows & Borders */
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --border-radius: 12px; /* Rounded corners for modern UI */
+}
+
 * {
   margin: 0;
   padding: 0;
 }
 button {
-  color: black;
+  color: var(--primary-color);
 
   all: unset;
 }
@@ -15,14 +45,14 @@ button {
   max-width: 90%;
   margin: 4vh auto;
   padding: 2vh;
-  background-color: #dee4e7;
+  background-color: var(--background-color);
   border-radius: 10px;
 }
 .cart-badge {
   width: 100px;
   height: 100px;
   padding: 2px 6px;
-  background-color: red;
+  background-color: var(--error-color);
   border-radius: 50%;
 }
 .cart-button:focus {
@@ -30,19 +60,15 @@ button {
   outline-offset: 4px;
 }
 .cart-toggle-button.remove {
-  background-color: #c00; /* a bold red for remove */
   color: #fff;
   font-weight: 700;
   /* …same padding/border-radius as above… */
-}
-.cart-toggle-button.remove:hover {
-  background-color: #e00;
 }
 
 .cart-toggle-button.add,
 .cart-toggle-button.remove {
   background: none; /* remove any BG */
-  color: #000 !important; /* force solid black text */
+  color: var(--primary-color) !important; /* force solid black text */
   font-weight: 700; /* bold text */
   border: none; /* remove any borders */
   padding: 0; /* remove extra padding if you want */
@@ -63,7 +89,7 @@ button {
   position: relative; /* ensure it’s on top */
   z-index: 10;
   background-color: #f44336; /* red remove button */
-  color: white;
+  color: var(--background-color);
   border-radius: 4px;
   padding: 0.5em 1em;
   visibility: visible;
@@ -82,7 +108,7 @@ button {
   align-items: center;
   gap: 1.5vh;
   padding: 1vh;
-  background-color: white;
+  background-color: var(--background-color);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -121,7 +147,7 @@ button {
   margin-left: auto;
   all: unset;
   padding: 0.5vh 1vh;
-  background-color: #c0c5c8;
+  background-color: var(--contrast-text-color);
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -131,7 +157,7 @@ button {
 }
 
 .navbar {
-  background-color: #dee4e7;
+  background-color: var(--navbar-color);
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -143,6 +169,16 @@ button {
 .navbar-brand {
   display: block;
 }
+.brandIndicator {
+  padding: 1vh;
+  font-weight: bolder;
+  font-size: 3vh;
+  color: var(--text-color);
+}
+.left {
+  display: flex;
+  gap: 3vh;
+}
 .right {
   display: flex;
   gap: 5vh;
@@ -151,7 +187,7 @@ button {
 #logo {
   width: 25vh;
   height: 5vh;
-  background-color: #dee4e7;
+  background-color: var(--navbar-color);
   object-fit: cover;
 }
 #waffle {
@@ -160,10 +196,10 @@ button {
   cursor: pointer;
 }
 .brand-list {
-  width: 120px;
+  width: 25vh;
   position: absolute;
   top: 60px; /* appears below the navbar */
-  right: 19vh; /* align to the waffle icon */
+  right: 15vh; /* align to the waffle icon */
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -176,7 +212,7 @@ button {
 /* Brand button styles */
 .brand-list button {
   display: block;
-  width: 120px;
+  width: 118px;
   padding: 10px 20px;
   background: none;
   border: none;
@@ -221,7 +257,7 @@ button {
   height: 50%;
   padding: 2vh;
   border-radius: 10px;
-  background-color: #dee4e7;
+  background-color: var(--navbar-color);
   margin-top: 4vh;
 }
 .heroImage {
@@ -242,11 +278,11 @@ button {
   margin-top: 1px;
   margin-bottom: 2vh;
   font-weight: 600;
-  color: grey;
+  color: var(--subtle-text-color);
 }
 .heroTitle {
   cursor: default;
-
+  color: var(--text-color);
   font-size: medium;
   font-weight: 600;
   margin-top: 3vh;
@@ -260,6 +296,8 @@ button {
 .heroprice {
   cursor: default;
   width: 100%;
+  color: var(--accent-color);
+  margin-left: 0;
 }
 .vertical {
   display: flex;
@@ -282,4 +320,185 @@ button {
   height: 8vh;
   width: 24vh;
   border-radius: 10px;
+}
+.add-custom-shoe-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.add-custom-shoe-form h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.form-container input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.submit-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.cancel-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+/* ----------- Responsive Styling ----------- */
+
+/* For tablets and small laptops */
+@media (max-width: 1024px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .right {
+    gap: 2rem;
+  }
+
+  .lineup {
+    justify-content: center;
+  }
+
+  .main {
+    width: 45%; /* 2 items per row on medium screens */
+  }
+
+  .heroImage {
+    width: 30vh;
+    height: 30vh;
+  }
+
+  .add-custom-shoe-form {
+    width: 80%;
+  }
+}
+
+/* For mobile devices */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #logo {
+    width: 50vw;
+    height: auto;
+  }
+
+  .right {
+    gap: 1rem;
+    flex-direction: row;
+  }
+
+  .brand-list {
+    width: 80%;
+    right: auto;
+    left: 10%;
+  }
+
+  .lineup {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .main {
+    width: 90%; /* 1 item per row on small screens */
+  }
+
+  .heroImage {
+    width: 80vw;
+    height: auto;
+  }
+
+  .cart-preview-body {
+    width: 95%;
+    margin: 2vh auto;
+    padding: 1rem;
+  }
+
+  .cart-item-body {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart-item-body .thumb {
+    width: 60vw;
+    height: auto;
+  }
+
+  .form-container input {
+    font-size: 1rem;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .submit-btn,
+  .cancel-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+}
+
+/* Tiny devices (e.g., very small phones) */
+@media (max-width: 480px) {
+  .navbar {
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  #waffle {
+    width: 6vh;
+    height: 6vh;
+  }
+
+  .cart-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .cart-badge {
+    width: 20px;
+    height: 20px;
+    font-size: 0.7rem;
+    padding: 1px 4px;
+  }
+
+  .main {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .heroTitle,
+  .heroSubTitle,
+  .heroprice {
+    text-align: center;
+  }
 }
