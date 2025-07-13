@@ -1,31 +1,26 @@
 :root {
-  /* Brand Colors */
-  --primary-color: #111827; /* Dark charcoal (main text, logo) */
-  --secondary-color: #4f46e5; /* Indigo (buttons, highlights) */
-  --accent-color: #10b981; /* Emerald green (success, price tags) */
-  --warning-color: #f59e0b; /* Amber (alerts, badges) */
-  --error-color: #ef4444; /* Red (remove buttons) */
+  --primary-color: #111827;
+  --secondary-color: #4f46e5;
+  --accent-color: #10b981;
+  --warning-color: #f59e0b;
+  --error-color: #ef4444;
 
-  /* Background Colors */
-  --background-color: #f9fafb; /* Light gray background */
-  --card-color: #ffffff; /* White for product cards */
-  --navbar-color: #dee4e7; /* Navbar background */
-  --footer-color: #111827; /* Dark footer background */
+  --background-color: #f9fafb;
+  --card-color: #ffffff;
+  --navbar-color: #dee4e7;
+  --footer-color: #111827;
 
-  /* Text Colors */
-  --text-color: #1f2937; /* Dark text */
-  --subtle-text-color: #6b7280; /* Grayish text for subtitles */
-  --contrast-text-color: #ffffff; /* For buttons on dark bg */
+  --text-color: #1f2937;
+  --subtle-text-color: #6b7280;
+  --contrast-text-color: #ffffff;
 
-  /* Hover & Active */
-  --hover-color: #4338ca; /* Darker Indigo for hover states */
-  --hover-background: #f3f4f6; /* Light hover background */
-  --active-color: #2563eb; /* Blue for active states */
-  --disabled-color: #d1d5db; /* Gray for disabled elements */
+  --hover-color: #4338ca;
+  --hover-background: #f3f4f6;
+  --active-color: #2563eb;
+  --disabled-color: #d1d5db;
 
-  /* Shadows & Borders */
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --border-radius: 12px; /* Rounded corners for modern UI */
+  --border-radius: 12px;
 }
 
 * {
@@ -37,7 +32,7 @@ button {
 
   all: unset;
 }
-/* Cart preview container */
+
 .cart-preview-body {
   display: flex;
   flex-direction: column;
@@ -62,16 +57,15 @@ button {
 .cart-toggle-button.remove {
   color: #fff;
   font-weight: 700;
-  /* …same padding/border-radius as above… */
 }
 
 .cart-toggle-button.add,
 .cart-toggle-button.remove {
-  background: none; /* remove any BG */
-  color: var(--primary-color) !important; /* force solid black text */
-  font-weight: 700; /* bold text */
-  border: none; /* remove any borders */
-  padding: 0; /* remove extra padding if you want */
+  background: none;
+  color: var(--primary-color) !important;
+  font-weight: 700;
+  border: none;
+  padding: 0;
 }
 
 .cart-toggle-button.add:hover,
@@ -79,16 +73,15 @@ button {
   background: none;
 }
 
-/* Heading */
 .cart-preview-body h2 {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1vh;
 }
 .remove-button {
-  position: relative; /* ensure it’s on top */
+  position: relative;
   z-index: 10;
-  background-color: #f44336; /* red remove button */
+  background-color: #f44336;
   color: var(--background-color);
   border-radius: 4px;
   padding: 0.5em 1em;
@@ -96,13 +89,11 @@ button {
   opacity: 1;
 }
 
-/* If you have a hover overlay, explicitly override it */
 .cart-item-body:hover .remove-button {
   visibility: visible;
   opacity: 1;
 }
 
-/* Individual cart items */
 .cart-item-body {
   display: flex;
   align-items: center;
@@ -113,7 +104,6 @@ button {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Thumbnail image */
 .cart-item-body .thumb {
   width: 8vh;
   height: 8vh;
@@ -121,28 +111,24 @@ button {
   border-radius: 6px;
 }
 
-/* Info block (title + price) */
 .cart-item-body .item-info {
   display: flex;
   flex-direction: column;
   gap: 0.5vh;
 }
 
-/* Title styling */
 .cart-item-body .item-title {
   font-size: 1.1rem;
   font-weight: 600;
   color: #333;
 }
 
-/* Price styling */
 .cart-item-body .item-price {
   font-size: 1rem;
   font-weight: 500;
   color: #555;
 }
 
-/* “Add to Cart” button tweak (if you want one in the preview) */
 .cart-item-body button {
   margin-left: auto;
   all: unset;
@@ -162,7 +148,7 @@ button {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  /* gap: 140vh; */
+
   align-items: center;
   border-radius: 10px;
 }
@@ -198,8 +184,8 @@ button {
 .brand-list {
   width: 25vh;
   position: absolute;
-  top: 60px; /* appears below the navbar */
-  right: 15vh; /* align to the waffle icon */
+  top: 60px;
+  right: 15vh;
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -209,7 +195,6 @@ button {
   animation: fadeIn 0.2s ease-in-out;
 }
 
-/* Brand button styles */
 .brand-list button {
   display: block;
   width: 118px;
@@ -225,21 +210,20 @@ button {
 }
 
 .brand-list button:hover {
-  background-color: #f2f2f2; /* light grey on hover */
+  background-color: #f2f2f2;
 }
 
-/* Highlight active brand */
 .brand-active {
-  color: #c00; /* Red text for active brand */
+  color: #c00;
   font-weight: 600;
 }
 .cart-icon svg {
   width: 28px;
   height: 28px;
-  color: #333; /* Icon color */
+  color: #333;
 }
 .cart-icon {
-  display: flex; /* Make sure SVG is centered */
+  display: flex;
   align-items: center;
   cursor: pointer;
 }
@@ -249,10 +233,8 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  /* padding: 2vh; */
 }
 .main {
-  /* border: 2px solid black; */
   width: 30%;
   height: 50%;
   padding: 2vh;
@@ -265,7 +247,7 @@ button {
   height: 37vh;
   padding: 1vh;
   object-fit: cover;
-  /* margin-left: 2vh; */
+
   transition: transform 1s ease-in-out;
   cursor: pointer;
 }
@@ -364,9 +346,7 @@ button {
   padding: 0.5rem 1rem;
   border-radius: 4px;
 }
-/* ----------- Responsive Styling ----------- */
 
-/* For tablets and small laptops */
 @media (max-width: 1024px) {
   .navbar {
     flex-direction: column;
@@ -383,7 +363,7 @@ button {
   }
 
   .main {
-    width: 45%; /* 2 items per row on medium screens */
+    width: 45%;
   }
 
   .heroImage {
@@ -396,7 +376,6 @@ button {
   }
 }
 
-/* For mobile devices */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
@@ -426,7 +405,7 @@ button {
   }
 
   .main {
-    width: 90%; /* 1 item per row on small screens */
+    width: 90%;
   }
 
   .heroImage {
@@ -467,7 +446,6 @@ button {
   }
 }
 
-/* Tiny devices (e.g., very small phones) */
 @media (max-width: 480px) {
   .navbar {
     gap: 0.5rem;

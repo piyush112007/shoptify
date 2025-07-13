@@ -8,7 +8,7 @@ export default function Navbar({
   showCart,
   onBrandSelect,
   currentBrand,
-  onAddCustomShoe, // 👈 trigger form
+  onAddCustomShoe,
 }) {
   const [showBrands, setShowBrands] = useState(false);
   const companies = ["Nike", "Adidas", "Puma", "Reebok"];
@@ -33,7 +33,6 @@ export default function Navbar({
 
         {showBrands && (
           <div className="brand-list">
-            {/* Standard brands */}
             {companies.map((brand) => (
               <button
                 key={brand}
@@ -46,10 +45,7 @@ export default function Navbar({
               </button>
             ))}
 
-            {/* Divider */}
             <hr className="dropdown-divider" />
-
-            {/* View all custom shoes */}
             <button
               onClick={() => handleBrandClick("Custom")}
               className={
@@ -59,7 +55,6 @@ export default function Navbar({
               👟 View Custom Shoes
             </button>
 
-            {/* Add new custom shoe */}
             <button
               onClick={() => {
                 setShowBrands(false);
@@ -72,7 +67,6 @@ export default function Navbar({
           </div>
         )}
 
-        {/* Cart Icon */}
         <button
           id="cart-icon-button"
           type="button"

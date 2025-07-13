@@ -10,13 +10,11 @@ function App() {
   const [showCart, setShowCart] = useState(false);
   const [currentBrand, setCurrentBrand] = useState("Reebok");
   const [products, setProducts] = useState(ProductData);
-  const [addingCustomShoe, setAddingCustomShoe] = useState(false); // 👈 Track form
-
+  const [addingCustomShoe, setAddingCustomShoe] = useState(false);
   const handleBrandSelect = (brand) => {
     setCurrentBrand(brand);
   };
 
-  // Load cart from localStorage
   useEffect(() => {
     const savedCart = localStorage.getItem("sneakify_cart");
     if (savedCart) {
@@ -34,9 +32,9 @@ function App() {
   const toggleCart = () => setShowCart((prev) => !prev);
 
   const handleAddCustomShoe = (newShoe) => {
-    setProducts((prev) => [...prev, newShoe]); // Add shoe
-    setAddingCustomShoe(false); // Back to listing
-    setCurrentBrand("Custom"); // Show custom shoes
+    setProducts((prev) => [...prev, newShoe]);
+    setAddingCustomShoe(false);
+    setCurrentBrand("Custom");
   };
 
   const list = showCart
@@ -51,14 +49,14 @@ function App() {
         cartCount={cart.length}
         onCartClick={toggleCart}
         showCart={showCart}
-        onAddCustomShoe={() => setAddingCustomShoe(true)} // 👈 Show form
+        onAddCustomShoe={() => setAddingCustomShoe(true)}
       />
 
       <div className="container">
         {addingCustomShoe ? (
           <AddCustomShoeForm
             onSubmit={handleAddCustomShoe}
-            onCancel={() => setAddingCustomShoe(false)} // 👈 Cancel form
+            onCancel={() => setAddingCustomShoe(false)}
           />
         ) : (
           <div className="lineup">

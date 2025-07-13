@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DEFAULT_IMAGE from "./Images/logo.png"; // Placeholder image
+import DEFAULT_IMAGE from "./Images/logo.png";
 
 export default function AddCustomShoeForm({ onSubmit, onCancel }) {
   const [customShoe, setCustomShoe] = useState({
@@ -13,7 +13,6 @@ export default function AddCustomShoeForm({ onSubmit, onCancel }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Automatically prefix ₹ for price
     if (name === "price") {
       const formattedPrice = value.startsWith("₹")
         ? value
@@ -33,10 +32,10 @@ export default function AddCustomShoeForm({ onSubmit, onCancel }) {
     ) {
       const newShoe = {
         ...customShoe,
-        image: customShoe.image.trim() || DEFAULT_IMAGE, // Use placeholder if blank
+        image: customShoe.image.trim() || DEFAULT_IMAGE,
       };
-      onSubmit(newShoe); // Pass new shoe back
-      // Reset form
+      onSubmit(newShoe);
+
       setCustomShoe({
         title: "",
         subtitle: "",
