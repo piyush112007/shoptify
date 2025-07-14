@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Analytics } from "@vercel/analytics/react";
+
 import "./App.css";
 import Tile from "./Components/tile";
 import ProductData from "./Components/product";
@@ -44,7 +44,6 @@ function App() {
 
   return (
     <div className="App">
-      <Analytics />
       <Navbar
         onBrandSelect={handleBrandSelect}
         currentBrand={currentBrand}
