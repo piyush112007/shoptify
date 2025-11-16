@@ -63,7 +63,7 @@ If you’d like to improve this project:
 
 ## 🌐 Demo Link
 
-👉 [**Live Demo on Netlify**](https://sneakify-sigma.vercel.app/)
+👉 [**Live Demo on Vercel**](https://sneakify-sigma.vercel.app/)
 ---
 
 ## 📬 Connect With Me
